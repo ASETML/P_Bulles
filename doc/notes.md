@@ -49,11 +49,10 @@
 - [Mdn Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 - [Delicious Insights](https://delicious-insights.com/fr/articles-et-tutos/js-es-modules/)
 - Un fichier, un module
-- Les fonctions, variables, classes, etc de chaque modules sont privés, ont les exposent avec des export et import
+- Les fonctions, variables, classes, etc de chaque modules sont privés, on les exposent avec des export et import
 - Export et Import
     - Export
-        - Elements individuels à la racine du fichier : ```
-        export const name = "square";```
+        - Elements individuels à la racine du fichier : ```export const name = "square";```
         ```
         export function draw(ctx, length, x, y, color) {
                 ctx.fillStyle = color;
