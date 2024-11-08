@@ -119,3 +119,7 @@
 
             - ```arcTo(x1, y1, x2, y2, rayon)```
                 Dessine un arc avec les points de contrôle et l'angle donnés, relié au point précédent par une ligne droite.
+## 15.11.2024
+### Planif
+- Affichage du snake
+- Apparition de la nouriture
