@@ -65,3 +65,6 @@
     - Import
         - Au tout début du script ```import { name, draw, reportArea, reportPerimeter } from "./modules/square.js";```
         - Possibilité de les renommer ```import { name as squareName, draw } from "./shapes/square.js";```
+### Structure repo
+- Un dossier doc : la documentation
+- Un dossier snake : le code
