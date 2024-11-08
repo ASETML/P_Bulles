@@ -39,3 +39,8 @@
 ### Staged and Stashed files
 - ```Staged``` les fichiers préparés pour le commit
 - ```Stashed``` littéralement "planqués" : les changements mis de coté temporairement
+
+### Installation des outils
+- Node.js v22.11.0
+- ```npm install``` à la racine du snake pour installer les dépendances
+- ```npm run dev``` pour lancer le serveur
