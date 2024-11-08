@@ -44,3 +44,24 @@
 - Node.js v22.11.0
 - ```npm install``` à la racine du snake pour installer les dépendances
 - ```npm run dev``` pour lancer le serveur
+
+### ECMAScript Modules (ESM)
+- [Mdn Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+- [Delicious Insights](https://delicious-insights.com/fr/articles-et-tutos/js-es-modules/)
+- Un fichier, un module
+- Les fonctions, variables, classes, etc de chaque modules sont privés, ont les exposent avec des export et import
+- Export et Import
+    - Export
+        - Elements individuels à la racine du fichier : ```
+        export const name = "square";```
+        ```
+        export function draw(ctx, length, x, y, color) {
+                ctx.fillStyle = color;
+                ctx.fillRect(x, y, length, length);
+                return { length, x, y, color };
+            }
+        ```
+        - Export global à la fin d'un fichier ```export { name, draw, reportArea, reportPerimeter };```
+    - Import
+        - Au tout début du script ```import { name, draw, reportArea, reportPerimeter } from "./modules/square.js";```
+        - Possibilité de les renommer ```import { name as squareName, draw } from "./shapes/square.js";```
