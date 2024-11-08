@@ -35,3 +35,7 @@
     - ```controls.js``` Gère les touches
     - ```collision.js``` Détecte les collision
     - ```score.js``` Gestion et affichage des scores
+
+### Staged and Stashed files
+- ```Staged``` les fichiers préparés pour le commit
+- ```Stashed``` littéralement "planqués" : les changements mis de coté temporairement
