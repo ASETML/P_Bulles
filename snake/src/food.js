@@ -10,43 +10,40 @@
  * @returns {{x: number, y: number}} - Un objet contenant les coordonnées `x` et `y` de la nourriture générée.
  */
 export function generateFood(box, canvas) {
-  let isSmallerThanCanva = true;
-  let foodPosX;
-  let foodPosY;
+  let isSmallerThanCanva = false; // Si la position est dans le canevas
+  let foodPosX; // La position de la nouriture sur l'axe X
+  let foodPosY; // La position de la nouriture sur l'axe Y
 
-  while (isSmallerThanCanva) {
+  while (!isSmallerThanCanva) {
     // On génère un nombre aléatoire
-    let random = Math.random() * 100;
-    console.log(random);
-    // On le multiplie par la taille d'une case
+    let random = Math.floor(Math.random() * (canvas.width / box - 0 + 1)) + 0;
+    // On le multiplie par la taille d'une case: il sera forcèment sur la grille
     random *= box;
 
     // Si il est plus grand que le canevas, on en génère un autre
+    // Sinon le nombre obtenu est la position sur l'axe X de notre nouriture
     if (random < canvas.width) {
-      console.log(random + " sucess");
       foodPosX = random;
-      isSmallerThanCanva = false;
+      isSmallerThanCanva = true;
     }
   }
-  // Sinon le nombre obtenu est la position sur l'axe X de notre nouriture
+  
   
   // On répète l'opération pour l'axe Y
-  isSmallerThanCanva = true;
-  while (isSmallerThanCanva) {
+  isSmallerThanCanva = false;
+  while (!isSmallerThanCanva) {
     // On génère un nombre aléatoire
-    let random = Math.random() * 100;
-    console.log(random);
-    // On le multiplie par la taille d'une case
+    let random = Math.floor(Math.random() * (canvas.width / box - 0 + 1)) + 0;
+    // On le multiplie par la taille d'une case: il sera forcèment sur la grille
     random *= box;
     // Si il est plus grand que le canevas, on en génère un autre
-    if (random < canvas.width) {
-      console.log(random + " sucess");
+    if (random < canvas.height && random % box == 0) {
       foodPosY = random;
-      isSmallerThanCanva = false;
+      isSmallerThanCanva = true;
     }
   }
 
-  return {x: foodPosX, y: foodPosY};
+  return {x: foodPosX, y: 1}; // On retourne la position de la nouriture
 }
 
 /**
