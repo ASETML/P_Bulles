@@ -43,7 +43,7 @@ export function generateFood(box, canvas) {
     }
   }
 
-  return {x: foodPosX, y: 1}; // On retourne la position de la nouriture
+  return {x: foodPosX, y: foodPosY}; // On retourne la position de la nouriture
 }
 
 /**
