@@ -160,3 +160,35 @@
 - src
     - Chaque fichier à un rôle
         - Import / Export
+### Touches
+- [StackOverFlow](https://stackoverflow.com/questions/4416505/how-to-take-keyboard-input-in-javascript)
+- Event Listener
+- ```
+    window.addEventListener("keydown", function (event) {
+    if (event.defaultPrevented) {
+        return; // Do nothing if the event was already processed
+    }
+
+    switch (event.key) {
+        case "ArrowDown":
+        // code for "down arrow" key press.
+        break;
+        case "ArrowUp":
+        // code for "up arrow" key press.
+        break;
+        case "ArrowLeft":
+        // code for "left arrow" key press.
+        break;
+        case "ArrowRight":
+        // code for "right arrow" key press.
+        break;
+        default:
+        return; // Quit when this doesn't handle the key event.
+    }
+
+    // Cancel the default action to avoid it being handled twice
+    event.preventDefault();
+    }, true);
+    // the last option dispatches the event to the listener first,
+    // then dispatches event to window
+    ```
