@@ -119,6 +119,23 @@
 
             - ```arcTo(x1, y1, x2, y2, rayon)```
                 Dessine un arc avec les points de contrôle et l'angle donnés, relié au point précédent par une ligne droite.
+### Squash commit
+- Glisser un commit sur l'autre
+- Un seul commit qui contient les changements
+- Avant de push
+### Grille d'évaluation
+- Expression et écologie pas évaluées
+- Rythme de travail : qualité et pas quantité
+- Qualité : fonctionne tous seul
+- Connaissances professionnelles : dette technique
+- Aptitude au travail: JDT, donc les commits
+- Autonomie : Régles du travailler ensemble
+
+### Dette technique
+- Anciennes manières de faire : le langage évolue et facilite certaines choses. Il faut utiliser cette nouvelle syntaxe au maximum.
+- Consciente : ```TODO: dette technique, à reécrir```
+- Inconsciente : **A éviter** !
+
 ## 15.11.2024
 ### Planif
 - Affichage du snake
