@@ -28,6 +28,7 @@ function startGame() {
 
 function draw() {
   drawFood(ctx, food, box);
+  drawSnake(ctx, [{x: 20, y: 20}, {x: 40, y: 20}], box);
 }
 
 startGame();
