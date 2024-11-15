@@ -4,10 +4,12 @@
  * Cette fonction crée le serpent en tant que tableau contenant un seul segment,
  * positionné à une position de départ définie sur la grille.
  *
+ * @param {number} box - La taille d'une case de la grille en pixels.
+ * @param {HTMLCanvasElement} canvas - L'élément canvas représentant la surface de jeu.
  * @returns {Array<{x: number, y: number}>} - Un tableau contenant un objet représentant la position du premier segment du serpent.
  */
-export function initSnake() {
-  // A compléter
+export function initSnake(box, canvas) {
+  return [{x: canvas.width / 2, y: canvas.height / 2}];
 }
 
 /**
@@ -22,8 +24,27 @@ export function initSnake() {
  * @param {number} box - La taille d'une case de la grille en pixels, utilisée pour déterminer la distance de déplacement du serpent.
  * @returns {{x: number, y: number}} - Un objet représentant les nouvelles coordonnées `x` et `y` de la tête du serpent après le déplacement.
  */
-export function moveSnake() {
-  // A compléter
+export function moveSnake(snake, direction, box) {
+  let head = {x: snake.at(1).x, y: snake.at(1).y} // La tête du serpent est toujours le premier élément du tableau
+
+  // Calcule la nouvelle position de la tête
+  switch (direction) {
+    case "LEFT":
+      head = {x: snake.at(1).x - box, y: snake.at(1).y};
+      break;
+    case "UP":
+      head = {x: snake.at(1).x, y: snake.at(1).y + box};
+      break;
+    case "RIGHT":
+      head = {x: snake.at(1).x + box, y: snake.at(1).y};
+      break;
+    case "DOWN":
+      head = {x: snake.at(1).x, y: snake.at(1).y - box};
+      break;
+    // Si la direction est inconnue, on ne déplace pas la tête
+    default:
+      return head;
+  }
 }
 
 /**
