@@ -27,7 +27,7 @@ function startGame() {
 }
 
 function draw() {
-  // A compléter
+  drawFood(ctx, food, box);
 }
 
 startGame();

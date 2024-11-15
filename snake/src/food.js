@@ -9,8 +9,44 @@
  * @param {HTMLCanvasElement} canvas - L'élément canvas représentant la surface de jeu.
  * @returns {{x: number, y: number}} - Un objet contenant les coordonnées `x` et `y` de la nourriture générée.
  */
-export function generateFood() {
-  // A compléter
+export function generateFood(box, canvas) {
+  let isSmallerThanCanva = true;
+  let foodPosX;
+  let foodPosY;
+
+  while (isSmallerThanCanva) {
+    // On génère un nombre aléatoire
+    let random = Math.random() * 100;
+    console.log(random);
+    // On le multiplie par la taille d'une case
+    random *= box;
+
+    // Si il est plus grand que le canevas, on en génère un autre
+    if (random < canvas.width) {
+      console.log(random + " sucess");
+      foodPosX = random;
+      isSmallerThanCanva = false;
+    }
+  }
+  // Sinon le nombre obtenu est la position sur l'axe X de notre nouriture
+  
+  // On répète l'opération pour l'axe Y
+  isSmallerThanCanva = true;
+  while (isSmallerThanCanva) {
+    // On génère un nombre aléatoire
+    let random = Math.random() * 100;
+    console.log(random);
+    // On le multiplie par la taille d'une case
+    random *= box;
+    // Si il est plus grand que le canevas, on en génère un autre
+    if (random < canvas.width) {
+      console.log(random + " sucess");
+      foodPosY = random;
+      isSmallerThanCanva = false;
+    }
+  }
+
+  return {x: foodPosX, y: foodPosY};
 }
 
 /**
@@ -24,6 +60,7 @@ export function generateFood() {
  * @param {{x: number, y: number}} food - Un objet contenant les coordonnées `x` et `y` où la nourriture doit être dessinée.
  * @param {number} box - La taille d'une case de la grille en pixels, utilisée pour déterminer la taille de la nourriture.
  */
-export function drawFood() {
-  // A compléter
+export function drawFood(ctx, food, box) {
+  ctx.fillStyle = "red";
+  ctx.fillRect(food.x, food.y, box, box);
 }
