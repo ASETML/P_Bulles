@@ -30,21 +30,19 @@ export function moveSnake(snake, direction, box) {
   // Calcule la nouvelle position de la tête
   switch (direction) {
     case "LEFT":
-      head = {x: snake.at(1).x - box, y: snake.at(1).y};
+      head.x -= box;
       break;
     case "UP":
-      head = {x: snake.at(1).x, y: snake.at(1).y + box};
+      head.y += box;
       break;
     case "RIGHT":
-      head = {x: snake.at(1).x + box, y: snake.at(1).y};
+      head.x += box;
       break;
     case "DOWN":
-      head = {x: snake.at(1).x, y: snake.at(1).y - box};
+      head.y -= box;
       break;
-    // Si la direction est inconnue, on ne déplace pas la tête
-    default:
-      return head;
   }
+  return head;
 }
 
 /**
