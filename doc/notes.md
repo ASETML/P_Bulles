@@ -123,3 +123,23 @@
 ### Planif
 - Affichage du snake
 - Apparition de la nouriture
+### Développement Javascript
+- Le JS s'exécute dans le navigateur
+- Vite
+    - Serveur de développement
+        - Fourni les ressources demandé par la page
+    - vite.config.js
+        - Informations de configuration de Vite. Par exemple : le port
+- npm
+    - Gestionnaire de dépendances
+    - package.json
+        - Décrit le projet
+        - Dépendances
+        - Scripts: utilisés pour définir des commandes ```npm run <command>```
+    - package-lock.json
+        - Détails exacts de la configuration des packages
+- .gitignore
+    - Fichier qui ne seront jamais staged
+- src
+    - Chaque fichier à un rôle
+        - Import / Export
