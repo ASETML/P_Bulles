@@ -222,3 +222,25 @@
         - Pause le code si la console est ouverte
         - Permet le pas-à-pas (principal, entrant et sortant)
         - Permet de voir le valeur des variables lors de l'exécution
+### Modèle / Vue
+- Logique / Affichage
+- ```
+    while(1) {
+        update();
+        render();
+        sleep(frame - executionTime);
+    }
+    ```
+- 60 FPS = 16ms / 200ms = 5 FPS
+- Modèle
+    - Pomme ```{x: 100, y: 60}```, box
+    - Snake ```{x: 0, y: 0}```, box, direction
+    - Snake V2 ```[{x: 0, y: 0}, {x: 0, y: 20}, {x: 20, y: 20}, {x: 20, y: 40}]```, box, direction
+        - ```
+            ▓░░░░
+            ▓▓░░░
+            ░█░░░
+            ```
+    - Update: bouger + mahger
+    - Objets: {}
+    - Tableaux: []
