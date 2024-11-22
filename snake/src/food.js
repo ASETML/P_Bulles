@@ -33,7 +33,8 @@ export function generateFood(box, canvas) {
   isSmallerThanCanva = false;
   while (!isSmallerThanCanva) {
     // On génère un nombre aléatoire
-    let random = Math.floor(Math.random() * (canvas.width / box - 0 + 1)) + 0;
+    let random = Math.floor(Math.random() * (canvas.width / box - 0 + 1)) + 0; //Genere un nombre rond https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
     // On le multiplie par la taille d'une case: il sera forcèment sur la grille
     random *= box;
     // Si il est plus grand que le canevas, on en génère un autre
