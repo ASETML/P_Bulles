@@ -10,27 +10,12 @@
  * @returns {{x: number, y: number}} - Un objet contenant les coordonnées `x` et `y` de la nourriture générée.
  */
 export function generateFood(box, canvas) {
-  let isSmallerThanCanva = false; // Si la position est dans le canevas
-  let foodPosX; // La position de la nouriture sur l'axe X
-  let foodPosY; // La position de la nouriture sur l'axe Y
+  return {x: generateCoordinate(box, canvas), y: generateCoordinate(box, canvas)}; // On retourne la position de la nouriture
+}
 
-  while (!isSmallerThanCanva) {
-    // On génère un nombre aléatoire
-    let random = Math.floor(Math.random() * (canvas.width / box - 0 + 1)) + 0;
-    // On le multiplie par la taille d'une case: il sera forcèment sur la grille
-    random *= box;
-
-    // Si il est plus grand que le canevas, on en génère un autre
-    // Sinon le nombre obtenu est la position sur l'axe X de notre nouriture
-    if (random < canvas.width) {
-      foodPosX = random;
-      isSmallerThanCanva = true;
-    }
-  }
-  
-  
-  // On répète l'opération pour l'axe Y
-  isSmallerThanCanva = false;
+function generateCoordinate(box, canvas) {
+  let isSmallerThanCanva = false;
+  let pos;
   while (!isSmallerThanCanva) {
     // On génère un nombre aléatoire
     let random = Math.floor(Math.random() * (canvas.width / box - 0 + 1)) + 0; //Genere un nombre rond https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -38,13 +23,12 @@ export function generateFood(box, canvas) {
     // On le multiplie par la taille d'une case: il sera forcèment sur la grille
     random *= box;
     // Si il est plus grand que le canevas, on en génère un autre
-    if (random < canvas.height && random % box == 0) {
-      foodPosY = random;
+    if (random < canvas.height) {
+      pos = random;
       isSmallerThanCanva = true;
     }
   }
-
-  return {x: foodPosX, y: foodPosY}; // On retourne la position de la nouriture
+  return pos;
 }
 
 /**
