@@ -215,5 +215,10 @@
             - Personal acess tokens -> Tokens (classic)
             - **Cocher ```repo```**
             - Le token n'apparait qu'**une seule fois** !
-
-
+### Debugger
+- Plusieurs techniques:
+    - Console.log()
+    - Mot-clé ```debugger```
+        - Pause le code si la console est ouverte
+        - Permet le pas-à-pas (principal, entrant et sortant)
+        - Permet de voir le valeur des variables lors de l'exécution
