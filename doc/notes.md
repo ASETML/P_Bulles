@@ -192,3 +192,28 @@
     // the last option dispatches the event to the listener first,
     // then dispatches event to window
     ```
+## 22.11.2024
+### Daily Scrum
+- Aujourd'hui, je vais faire en sorte que le snake se déplace avec les touches
+### Kickoff
+- Daily Scrum: utile même si tous seul 
+- Point JSP: On doit toujours pouvoir expliquer son code.
+    - Si on ne peut pas : -1 points
+    - 0 points : **Echec**
+    - Toujours avec nous
+        - Si -1pts alors qu'on ne les a pas: -2 la semaine suivante
+- JDT: gitjournal
+    - Commit doivent respecter la structure
+    - Si on a oublié de faire un commit, on peut ajouter une troisième accolade
+        - [durée] [status] [correction]
+        - Ce qui donnerait (ligne de commande car commit vide): ```git commit -m "feat(snake): Affichage de la tête" -m "[30min] [Done] [2024-11-18]" --allow-empty```
+    - Renommer ```.config.js.example``` en ```.config.js```
+    - Changer l'url du repo et le token
+        - Pour générer un token
+            - Aller sur github.com/monprofile
+            - Aller dans Settings -> Developer Settings
+            - Personal acess tokens -> Tokens (classic)
+            - **Cocher ```repo```**
+            - Le token n'apparait qu'**une seule fois** !
+
+
