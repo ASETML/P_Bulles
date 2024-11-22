@@ -27,6 +27,7 @@ function startGame() {
 }
 
 function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawFood(ctx, food, box);
   drawSnake(ctx, snake, box);
   drawScore(ctx, score);

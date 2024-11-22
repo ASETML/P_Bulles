@@ -8,7 +8,6 @@
  * @param {number} score - Le score à afficher, qui est un entier.
  */
 export function drawScore(ctx, score) {
-  ctx.clearRect(0, 0, 30, 20);
   ctx.font = "20px Arial";
   ctx.fillStyle = "black"
   ctx.fillText(score, 5, 20);
