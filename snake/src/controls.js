@@ -52,3 +52,17 @@ export function handleDirectionChange(event, currentDirection) {
       return currentDirection;
   }
 }
+
+export function handlePause(event, pause) {
+  //debugger;
+  if (event.key === " ") {
+    console.log(event);
+    //Si le jeu est en pause, on le relance, sinon on le met en pause
+    if (pause) {
+      return false
+    }
+    else {
+      return true;
+    }
+  }
+}
