@@ -41,10 +41,21 @@ function gameTick() {
   isFoodEaten(snake, food);
   draw();
 
-  if (checkWallCollision(snake.at(0), canvas, box)) {
-    startGame();
+  if (checkWallCollision(snake.at(0), canvas)) {
+    restartGame();
   }
 }
+
+function restartGame() {
+  //Vide les valeurs pour préparer la nouvelle partie
+  snake = null;
+  food = null;
+  direction = "RIGHT";
+  score = 0;
+  clearInterval(gameInterval);
+  shouldGrow = null;
+
+  startGame();
 }
 
 function draw() {
