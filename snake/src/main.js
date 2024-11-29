@@ -40,6 +40,11 @@ function gameTick() {
   moveSnake(snake, direction, box, shouldGrow);
   isFoodEaten(snake, food);
   draw();
+
+  if (checkWallCollision(snake.at(0), canvas, box)) {
+    startGame();
+  }
+}
 }
 
 function draw() {
