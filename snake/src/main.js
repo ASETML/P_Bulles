@@ -1,4 +1,4 @@
-import { initSnake, moveSnake, drawSnake } from "./snake.js";
+import { initSnake, moveSnake, drawSnake, isFoodEaten } from "./snake.js";
 import { generateFood, drawFood } from "./food.js";
 import { handleDirectionChange } from "./controls.js";
 import { checkCollision, checkWallCollision } from "./collision.js";
@@ -14,6 +14,7 @@ let food;
 let direction = "RIGHT";
 let score = 0;
 let gameInterval; // Variable pour stocker l'identifiant de l'intervalle
+let shouldGrow; //Si le serpent doit grandir au prochain tick
 
 document.addEventListener("keydown", (event) => {
   direction = handleDirectionChange(event, direction);
@@ -27,10 +28,17 @@ function startGame() {
 }
 
 function gameTick() {
-  moveSnake(snake, direction, box);
-  if (food === null) {
+  if (isFoodEaten(snake, food)) {
+    shouldGrow = true
     food = generateFood(box, canvas);
+    score++;
   }
+  else {
+    shouldGrow = false;
+  }
+  
+  moveSnake(snake, direction, box, shouldGrow);
+  isFoodEaten(snake, food);
   draw();
 }
 
@@ -39,8 +47,6 @@ function draw() {
   drawFood(ctx, food, box);
   drawSnake(ctx, snake, box);
   drawScore(ctx, score);
-  //TEMP
-  score++;
 }
 
 startGame();

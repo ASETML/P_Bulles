@@ -24,7 +24,7 @@ export function initSnake(box, canvas) {
  * @param {number} box - La taille d'une case de la grille en pixels, utilisée pour déterminer la distance de déplacement du serpent.
  * @returns {{x: number, y: number}} - Un objet représentant les nouvelles coordonnées `x` et `y` de la tête du serpent après le déplacement.
  */
-export function moveSnake(snake, direction, box) {
+export function moveSnake(snake, direction, box, shouldGrow) {
   let head = {x: snake.at(0).x, y: snake.at(0).y} // La tête du serpent est toujours le premier élément du tableau
 
   // Calcule la nouvelle position de la tête
@@ -45,8 +45,10 @@ export function moveSnake(snake, direction, box) {
 
   //Ajoute la nouvelle tete au début du serpent
   snake.unshift(head);
-  //Supprime le dernier élement du serpent
-  snake.pop();
+  //Supprime le dernier élement du serpent si le serpent doit grandir
+  if (!shouldGrow) {
+    snake.pop();
+  }
 }
 
 /**
@@ -75,5 +77,15 @@ export function drawSnake(ctx, snake, box) {
     }
 
     ctx.fillRect(segment.x, segment.y, box, box);
+  }
+}
+
+export function isFoodEaten(snake, food) {
+  //Vérifie si la nouriture doit être mangée
+  if (snake.at(0).x === food.x && snake.at(0).y === food.y) {
+    return true
+  }
+  else {
+    return false;
   }
 }
