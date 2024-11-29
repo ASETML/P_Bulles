@@ -25,7 +25,7 @@ export function initSnake(box, canvas) {
  * @returns {{x: number, y: number}} - Un objet représentant les nouvelles coordonnées `x` et `y` de la tête du serpent après le déplacement.
  */
 export function moveSnake(snake, direction, box) {
-  let head = {x: snake.at(1).x, y: snake.at(1).y} // La tête du serpent est toujours le premier élément du tableau
+  let head = {x: snake.at(0).x, y: snake.at(0).y} // La tête du serpent est toujours le premier élément du tableau
 
   // Calcule la nouvelle position de la tête
   switch (direction) {
@@ -33,16 +33,20 @@ export function moveSnake(snake, direction, box) {
       head.x -= box;
       break;
     case "UP":
-      head.y += box;
+      head.y -= box;
       break;
     case "RIGHT":
       head.x += box;
       break;
     case "DOWN":
-      head.y -= box;
+      head.y += box;
       break;
   }
-  return head;
+
+  //Ajoute la nouvelle tete au début du serpent
+  snake.unshift(head);
+  //Supprime le dernier élement du serpent
+  snake.pop();
 }
 
 /**
