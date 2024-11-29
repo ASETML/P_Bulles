@@ -32,20 +32,11 @@ export function generateFood(box, canvas, snake) {
 }
 
 function generateCoordinate(box, canvas) {
-  let isSmallerThanCanva = false;
   let pos;
-  while (!isSmallerThanCanva) {
-    // On génère un nombre aléatoire
-    let random = Math.floor(Math.random() * (canvas.width / box - 0 + 1)) + 0; //Genere un nombre rond https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-
-    // On le multiplie par la taille d'une case: il sera forcèment sur la grille
-    random *= box;
-    // Si il est plus grand que le canevas, on en génère un autre
-    if (random < canvas.height) {
-      pos = random;
-      isSmallerThanCanva = true;
-    }
-  }
+  // On génère un nombre aléatoire
+  let random = Math.floor(Math.random() * (canvas.width / box)); //Genere un nombre rond https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+  // On le multiplie par la taille d'une case: il sera forcèment sur la grille
+  pos = random * box;
   return pos;
 }
 
