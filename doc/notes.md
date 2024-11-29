@@ -192,6 +192,7 @@
     // the last option dispatches the event to the listener first,
     // then dispatches event to window
     ```
+
 ## 22.11.2024
 ### Daily Scrum
 - Aujourd'hui, je vais faire en sorte que le snake se déplace avec les touches
@@ -244,3 +245,7 @@
     - Update: bouger + mahger
     - Objets: {}
     - Tableaux: []
+
+# 29.11.24
+- Aujourd'hui, le serpent va se déplacer
+- Aujourd'hui, le serpent va manger la nouriture
