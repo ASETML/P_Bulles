@@ -62,9 +62,18 @@ export function moveSnake(snake, direction, box) {
  * @param {number} box - La taille d'une case de la grille en pixels, utilisée pour déterminer la taille de chaque segment du serpent.
  */
 export function drawSnake(ctx, snake, box) {
-  ctx.fillStyle = "green";
+  let isHead = true;
   // On affiche chaque segment du serpent
   for (let segment of snake) {
+    //La tête est affichée dans une couleur différente
+    if (isHead) {
+      ctx.fillStyle = "darkGreen";
+      isHead = false;
+    }
+    else {
+      ctx.fillStyle = "limeGreen";
+    }
+
     ctx.fillRect(segment.x, segment.y, box, box);
   }
 }
