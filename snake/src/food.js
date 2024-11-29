@@ -9,8 +9,26 @@
  * @param {HTMLCanvasElement} canvas - L'élément canvas représentant la surface de jeu.
  * @returns {{x: number, y: number}} - Un objet contenant les coordonnées `x` et `y` de la nourriture générée.
  */
-export function generateFood(box, canvas) {
-  return {x: generateCoordinate(box, canvas), y: generateCoordinate(box, canvas)}; // On retourne la position de la nouriture
+export function generateFood(box, canvas, snake) {
+  let positionOk = false;
+  let position;
+  while (!positionOk) {
+    position = {x: generateCoordinate(box, canvas), y: generateCoordinate(box, canvas)};
+
+    //Vérifie que la nouriture ne se génère pas sur le serpent
+    for (let segment of snake) {
+      if (position.x != segment.x && position.y != segment.y) {
+        positionOk = true;
+        console.log("Position testée OK")
+      }
+      else {
+        positionOk = false;
+        console.log("Position testée NOK")
+      }
+    }
+    console.log(positionOk);
+  }
+  return position // On retourne la position de la nouriture
 }
 
 function generateCoordinate(box, canvas) {

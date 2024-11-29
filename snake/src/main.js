@@ -22,7 +22,7 @@ document.addEventListener("keydown", (event) => {
 
 function startGame() {
   snake = initSnake(box, canvas);
-  food = generateFood(box, canvas);
+  food = generateFood(box, canvas, snake);
 
   gameInterval = setInterval(gameTick, gameSpeed); // Stockage de l'identifiant de l'intervalle
 }
@@ -30,7 +30,7 @@ function startGame() {
 function gameTick() {
   if (isFoodEaten(snake, food)) {
     shouldGrow = true
-    food = generateFood(box, canvas);
+    food = generateFood(box, canvas, snake);
     score++;
   }
   else {
