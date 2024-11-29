@@ -24,10 +24,9 @@ export function checkCollision() {
  *
  * @param {{x: number, y: number}} head - Un objet représentant les coordonnées `x` et `y` de la tête du serpent.
  * @param {HTMLCanvasElement} canvas - L'élément canvas représentant la surface de jeu.
- * @param {number} box - La taille d'une case de la grille en pixels, utilisée pour déterminer les limites du déplacement du serpent.
  * @returns {boolean} - Retourne `true` si la tête du serpent entre en collision avec un mur, sinon `false`.
  */
-export function checkWallCollision(head, canvas, box) {
+export function checkWallCollision(head, canvas) {
   //Collisions horizontales
   if (head.x >= canvas.width || head.x < 0) {
     return true;
