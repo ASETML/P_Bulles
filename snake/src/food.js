@@ -10,25 +10,22 @@
  * @returns {{x: number, y: number}} - Un objet contenant les coordonnées `x` et `y` de la nourriture générée.
  */
 export function generateFood(box, canvas, snake) {
-  let positionOk = false;
-  let position;
-  while (!positionOk) {
-    position = {x: generateCoordinate(box, canvas), y: generateCoordinate(box, canvas)};
+  let positionNotOK = true;
+  let foodPos;
 
-    //Vérifie que la nouriture ne se génère pas sur le serpent
+  //Tant que la position n'est pas bonne, on en génère une autre
+  while (positionNotOK) {
+    foodPos = {x: generateCoordinate(box, canvas), y: generateCoordinate(box, canvas)}; //On génère une nouvelle position
+    positionNotOK = false; //Par défaut, la position est OK
+    //Pour chaque segment du snake
     for (let segment of snake) {
-      if (position.x != segment.x && position.y != segment.y) {
-        positionOk = true;
-        console.log("Position testée OK")
-      }
-      else {
-        positionOk = false;
-        console.log("Position testée NOK")
+      //Si la nouriture se génère sur le serpent
+      if (foodPos.x === segment.x && foodPos.y === segment.y) {
+        positionNotOK = true; //La position n'est pas bonne
       }
     }
-    console.log(positionOk);
   }
-  return position // On retourne la position de la nouriture
+  return foodPos; //On retourne la nouriture
 }
 
 function generateCoordinate(box, canvas) {
