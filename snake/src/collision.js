@@ -6,22 +6,22 @@
  * aux mêmes coordonnées `x` et `y` qu'un autre segment, la fonction retourne `true`,
  * indiquant une collision avec le corps du serpent (c'est-à-dire que le serpent se mord la queue).
  *
- * @param {{x: number, y: number}} head - Un objet représentant les coordonnées `x` et `y` de la tête du serpent.
  * @param {Array<{x: number, y: number}>} snake- Un tableau d'objets représentant les segments du serpent, où chaque objet contient des coordonnées `x` et `y`.
  * @returns {boolean} - Retourne `true` si la tête du serpent entre en collision avec un segment de son corps, sinon `false`.
  */
-export function checkCollision(head, snake) {
-  let isFirst = true;
-  for (let segment of snake) {
-    if (head === segment) {
-      if (!isFirst) {
-        console.log("Touché !");
-      }
-      else {
-        isFirst = false;
-      }
+export function checkCollision(snake) {
+  //On supprimme la tête
+  let head = snake.shift();
+
+  //On parcours le serpent
+  for(let segment of snake) {
+    if (head.x === segment.x && head.y === segment.y) {
+      snake.unshift(head); //Les objets sont passés par référence
+      return true;
     }
   }
+  snake.unshift(head); //Les objets sont passés par référence
+  return false;
 }
 
 /**

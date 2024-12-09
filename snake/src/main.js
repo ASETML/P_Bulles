@@ -49,8 +49,7 @@ function gameTick() {
     moveSnake(snake, direction, box, shouldGrow);
     isFoodEaten(snake, food);
     
-    checkCollision(snake.at(0), snake);
-    if (checkWallCollision(snake.at(0), canvas)) {
+    if (checkWallCollision(snake.at(0), canvas) || checkCollision(snake)) {
       restartGame();
     }
   }
