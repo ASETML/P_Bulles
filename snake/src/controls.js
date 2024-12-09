@@ -15,7 +15,7 @@ export function handleDirectionChange(event, currentDirection) {
   //Determine la nouvelle direction du serpent
   //Quand l'utilisateur presse une touche : 
   //Si c'est une des touches de direction :
-  // Si la direction n'est pas opposée à celle actuelle :
+  //Si la direction n'est pas opposée à celle actuelle :
   //On retourne la nouvelle direction
   //Sinon, on retourne la direction actuelle
   //Si l'utilisateur n'a pas pressé une touche de direction, on retourne la direction actuelle
@@ -54,9 +54,7 @@ export function handleDirectionChange(event, currentDirection) {
 }
 
 export function handlePause(event, pause) {
-  //debugger;
   if (event.key === " ") {
-    console.log(event);
     //Si le jeu est en pause, on le relance, sinon on le met en pause
     if (pause) {
       return false
