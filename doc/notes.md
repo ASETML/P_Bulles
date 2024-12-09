@@ -256,3 +256,12 @@
 - En javascript, les arguments sont passés par valeur
 - Cependant, les références d'objets sont des valeurs en javascript
 - Les objets sont se comportent donc comme si ils étaient passés par références
+### Async et Defer
+- [Mdn Web Doc](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Asynchronous/Introducing)
+- [Ichi.pro](https://ichi.pro/fr/async-and-defer-le-guide-complet-pour-charger-correctement-javascript-226975547516597)
+- async : 
+    - Ne bloque pas le navigateur lors de la récupération du script
+    - Bloque le navigateur lors de l'éxecution du script
+- defer :
+    - Ne bloque pas le navigateur lors de la récupération du script
+    - Execute le script quand la page est prête
