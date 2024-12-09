@@ -246,6 +246,13 @@
     - Objets: {}
     - Tableaux: []
 
-# 29.11.24
+## 29.11.24
 - Aujourd'hui, le serpent va se déplacer
 - Aujourd'hui, le serpent va manger la nouriture
+
+## 09.12.2024
+- P_Prod
+### Passage des arguments
+- En javascript, les arguments sont passés par valeur
+- Cependant, les références d'objets sont des valeurs en javascript
+- Les objets sont se comportent donc comme si ils étaient passés par références
