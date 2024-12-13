@@ -65,7 +65,8 @@ export function moveSnake(snake, direction, box, shouldGrow) {
  */
 export function drawSnake(ctx, snake, box) {
   let isHead = true;
-  // On affiche chaque segment du serpent
+  ctx.strokeStyle = "darkGreen"; //Contour du serpent
+  //On affiche chaque segment du serpent
   for (let segment of snake) {
     //La tête est affichée dans une couleur différente
     if (isHead) {
@@ -77,6 +78,7 @@ export function drawSnake(ctx, snake, box) {
     }
 
     ctx.fillRect(segment.x, segment.y, box, box);
+    ctx.strokeRect(segment.x, segment.y, box, box);
   }
 }
 
