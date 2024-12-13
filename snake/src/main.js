@@ -104,7 +104,8 @@ function draw() {
     ctx.font = "52px Arial";
     ctx.fillStyle = textColor;
 
-    //TODO : centrer le texte
+    ctx.textBaseline = "middle"; //Centre le texte verticalement
+    ctx.textAlign = "center"; //Centre le texte horizontalement
     ctx.fillText("PAUSE", canvas.width / 2, canvas.height / 2);
   }
 }

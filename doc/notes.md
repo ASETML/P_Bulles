@@ -279,3 +279,5 @@
     - Secret Git :
         - Github empêche le push pour éviter de partager des informations confidentielles
         - Dans le cas de Antoine, il avait mis son PAT dans le fichier de notes
+- Centrer du texte dans un canva
+    - ```ctx.textBaseline = "middle"; ctx.textAlign = "center";```
