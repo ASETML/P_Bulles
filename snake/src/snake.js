@@ -1,3 +1,5 @@
+import { snakeColor, snakeHeadColor, snakeStrokeColor } from "./config.js";
+
 /**
  * Initialise le serpent au début du jeu.
  *
@@ -65,16 +67,16 @@ export function moveSnake(snake, direction, box, shouldGrow) {
  */
 export function drawSnake(ctx, snake, box) {
   let isHead = true;
-  ctx.strokeStyle = "darkGreen"; //Contour du serpent
+  ctx.strokeStyle = snakeStrokeColor; //Contour du serpent
   //On affiche chaque segment du serpent
   for (let segment of snake) {
     //La tête est affichée dans une couleur différente
     if (isHead) {
-      ctx.fillStyle = "darkGreen";
+      ctx.fillStyle = snakeHeadColor;
       isHead = false;
     }
     else {
-      ctx.fillStyle = "limeGreen";
+      ctx.fillStyle = snakeColor;
     }
 
     ctx.fillRect(segment.x, segment.y, box, box);

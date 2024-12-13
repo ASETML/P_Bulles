@@ -3,7 +3,7 @@ import { generateFood, drawFood } from "./food.js";
 import { handleDirectionChange, handlePause } from "./controls.js";
 import { checkCollision, checkWallCollision } from "./collision.js";
 import { drawScore } from "./score.js";
-import { box, gameSpeed } from "./config.js";
+import { box, gameSpeed, textColor } from "./config.js";
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
@@ -102,7 +102,7 @@ function draw() {
   if (pause) {
     //Style du texte
     ctx.font = "52px Arial";
-    ctx.fillStyle = "black"
+    ctx.fillStyle = textColor;
 
     //TODO : centrer le texte
     ctx.fillText("PAUSE", canvas.width / 2, canvas.height / 2);

@@ -1,3 +1,5 @@
+import { foodColor } from "./config.js";
+
 /**
  * Génère de manière aléatoire la position de la nourriture sur la grille du jeu.
  *
@@ -49,6 +51,6 @@ function generateCoordinate(box, canvas) {
  * @param {number} box - La taille d'une case de la grille en pixels, utilisée pour déterminer la taille de la nourriture.
  */
 export function drawFood(ctx, food, box) {
-  ctx.fillStyle = "red";
+  ctx.fillStyle = foodColor;
   ctx.fillRect(food.x, food.y, box, box);
 }
