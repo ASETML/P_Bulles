@@ -246,9 +246,12 @@
     - Objets: {}
     - Tableaux: []
 
-## 29.11.24
+## 29.11.2024
 - Aujourd'hui, le serpent va se déplacer
 - Aujourd'hui, le serpent va manger la nouriture
+
+## 06.12.2024
+- Préparation des portes ouvertes
 
 ## 09.12.2024
 - P_Prod
