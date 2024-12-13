@@ -63,4 +63,7 @@ export function handlePause(event, pause) {
       return true;
     }
   }
+  else {
+    return pause;
+  }
 }

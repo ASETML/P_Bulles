@@ -21,10 +21,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("keydown", (pauseEvent) => {
-  let newState = handlePause(pauseEvent, pause);
-  if (newState != undefined) {
-    pause = newState;
-  }
+  pause = handlePause(pauseEvent, pause); //On met à jour l'état du jeu
 });
 
 function startGame() {
