@@ -3,12 +3,11 @@ import { generateFood, drawFood } from "./food.js";
 import { handleDirectionChange, handlePause } from "./controls.js";
 import { checkCollision, checkWallCollision } from "./collision.js";
 import { drawScore } from "./score.js";
+import { box, gameSpeed } from "./config.js";
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-const box = 20;
-const gameSpeed = 200;
 let snake;
 let food;
 let direction = "RIGHT";
