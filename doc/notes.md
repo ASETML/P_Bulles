@@ -275,3 +275,7 @@
     - Aujourd'hui :
         - Externaliser les paramètres
         - Commencer la gestion des scores
+- Aide Piguet
+    - Secret Git :
+        - Github empêche le push pour éviter de partager des informations confidentielles
+        - Dans le cas de Antoine, il avait mis son PAT dans le fichier de notes
