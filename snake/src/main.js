@@ -8,50 +8,73 @@ import { box, gameSpeed } from "./config.js";
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-let snake;
-let food;
-let direction = "RIGHT";
-let score = 0;
+let snake; //Le serpent
+let food; //La nouriture
+let direction = "RIGHT"; //La direction du serpent
+let score = 0; //Le score du joueur
 let gameInterval; // Variable pour stocker l'identifiant de l'intervalle
 let shouldGrow; //Si le serpent doit grandir au prochain tick
-let pause = false;
+let pause = false; //Si le jeu est en pause. TODO: remplacer par une enum
 
+//Pour le déplacement du serpent
 document.addEventListener("keydown", (event) => {
   direction = handleDirectionChange(event, direction);
 });
 
+//Pour la pause
 document.addEventListener("keydown", (pauseEvent) => {
   pause = handlePause(pauseEvent, pause); //On met à jour l'état du jeu
 });
 
+/**
+ * Démarre le jeu.
+ * 
+ * Cette fonction initialise le serpent et génère une première nouriture. Elle démarre l'intervalle de jeu.
+ */
 function startGame() {
-  snake = initSnake(box, canvas);
-  food = generateFood(box, canvas, snake);
+  snake = initSnake(box, canvas); //On initialise le serpent
+  food = generateFood(box, canvas, snake); //On initialise la première nouriture
 
   gameInterval = setInterval(gameTick, gameSpeed); // Stockage de l'identifiant de l'intervalle
 }
 
+/**
+ * Fonction principale du jeu. Appelée par gameInterval.
+ * 
+ * Cette fonction est la fonction appelée à chaque tick du jeu.
+ * Si le jeu n'est pas en pause et qu'on mange une nouriture, on doit grandir, on incremente le score et on génère une nouvelle nouriture.
+ * Si le jeu n'est pas en pause, on déplace le serpent.
+ * Si le jeu n'est pas en pause et qu'on touche un mur ou sa queue, le jeu redémarre.
+ * Redessine de toute façon le jeu.
+ */
 function gameTick() {
+  //Si le jeu n'est pas en pause
   if (!pause) {
     if (isFoodEaten(snake, food)) {
-      shouldGrow = true
-      food = generateFood(box, canvas, snake);
+      shouldGrow = true //Le serpent va grandir
+      food = generateFood(box, canvas, snake); //On génère une nouvelle nourriture
       score++;
     }
     else {
-      shouldGrow = false;
+      shouldGrow = false; //Le serpent ne va pas grandir
     }
     
-    moveSnake(snake, direction, box, shouldGrow);
-    isFoodEaten(snake, food);
+    moveSnake(snake, direction, box, shouldGrow); //On déplace le serpent
     
+    //On vérifie que le joueur ne doit pas mourir
     if (checkWallCollision(snake.at(0), canvas) || checkCollision(snake)) {
-      restartGame();
+      restartGame(); //TODO: Afficher l'écran des scores
     }
   }
   draw();
 }
 
+/**
+ * Recommence une partie.
+ * 
+ * Cette fonction réinitialise les variables et surtout l'intervalle.
+ * Elle appelle ensuite startGame et relance le jeu.
+ */
 function restartGame() {
   //Vide les valeurs pour préparer la nouvelle partie
   snake = null;
@@ -61,21 +84,29 @@ function restartGame() {
   clearInterval(gameInterval);
   shouldGrow = null;
 
-  startGame();
+  startGame(); //Redémarre le jeu
 }
 
+/**
+ * Affiche tout le jeu.
+ * 
+ * Cette fonction affiche les différents éléments du jeu : la nouriture, le serpent, le score et l'indicateur de pause
+ */
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawFood(ctx, food, box);
-  drawSnake(ctx, snake, box);
-  drawScore(ctx, score);
+  ctx.clearRect(0, 0, canvas.width, canvas.height); //Efface le canevas
+  drawFood(ctx, food, box); //Affiche la nouriture
+  drawSnake(ctx, snake, box); //Affiche le serpent
+  drawScore(ctx, score); //Affiche le score
 
+  //Affichage de l'indicateur de pause
   if (pause) {
+    //Style du texte
     ctx.font = "52px Arial";
     ctx.fillStyle = "black"
+
     //TODO : centrer le texte
     ctx.fillText("PAUSE", canvas.width / 2, canvas.height / 2);
   }
 }
 
-startGame();
+startGame(); //Démarre le jeu
