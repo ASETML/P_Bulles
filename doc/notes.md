@@ -289,3 +289,13 @@
         Left: 'Left',
         Right: 'Right'
         }; ```
+- Chronomètre
+    - [Comment Coder](https://www.commentcoder.com/timer-javascript/)
+    - SetTimeout(myfunction, delay) : 
+        - Execute une fonction après un certain temps
+        - myfunction sans parenthèses: on n'appelle pas la fonction, on donne juste son nom
+        - delay en millisecondes
+    - SetIntervall()
+        - Execute une fonction tous les certains temps
+        - myfunction sans parenthèses: on n'appelle pas la fonction, on donne juste son nom
+        - delay en millisecondes

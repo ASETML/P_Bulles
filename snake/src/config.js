@@ -14,4 +14,4 @@ export const GameState = {
     Play: "Play",
     Pause: "Pause",
     GameOver: "GameOver"
-  };
+};
