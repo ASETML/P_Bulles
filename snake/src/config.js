@@ -8,3 +8,10 @@ export const snakeHeadColor = "darkGreen"; //La couleur de la tête du serpent
 export const snakeStrokeColor = "darkGreen"; //La couleur du contour du serpent
 export const foodColor = "red"; //La couleur de la nouriture
 export const textColor = "black"; //La couleur du texte
+
+//Enums
+export const GameState = {
+    Play: "Play",
+    Pause: "Pause",
+    GameOver: "GameOver"
+  };

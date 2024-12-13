@@ -281,3 +281,11 @@
         - Dans le cas de Antoine, il avait mis son PAT dans le fichier de notes
 - Centrer du texte dans un canva
     - ```ctx.textBaseline = "middle"; ctx.textAlign = "center";```
+- Enum en javasript
+    - [Mastering js](https://masteringjs.io/tutorials/fundamentals/enum)
+    - ```const Direction = {
+        Up: 'Up',
+        Down: 'Down',
+        Left: 'Left',
+        Right: 'Right'
+        }; ```
