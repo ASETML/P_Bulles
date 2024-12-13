@@ -268,3 +268,10 @@
 - defer :
     - Ne bloque pas le navigateur lors de la récupération du script
     - Execute le script quand la page est prête
+
+## 13.12.2024
+- Journal du 6 Décembre
+- Objectifs
+    - Aujourd'hui :
+        - Externaliser les paramètres
+        - Commencer la gestion des scores
