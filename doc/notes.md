@@ -299,3 +299,9 @@
         - Execute une fonction tous les certains temps
         - myfunction sans parenthèses: on n'appelle pas la fonction, on donne juste son nom
         - delay en millisecondes
+## 20.12.2024
+- Planification :
+    - Se demander : Comment je vais nommer mon prochain commit
+- Aujourd'hui :
+    - feat(score): Ajout d'un timer
+    - Ecran de gameOver
