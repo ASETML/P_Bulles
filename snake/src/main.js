@@ -15,6 +15,7 @@ let score = 0; //Le score du joueur
 let gameInterval; // Variable pour stocker l'identifiant de l'intervalle
 let shouldGrow; //Si le serpent doit grandir au prochain tick
 let gameState = GameStates.Play; //Si le jeu est en pause.
+let gameDuration = 0; //La durée de la partie
 
 //Pour le déplacement du serpent
 document.addEventListener("keydown", (event) => {
@@ -45,11 +46,15 @@ function startGame() {
  * Si le jeu n'est pas en pause et qu'on mange une nouriture, on doit grandir, on incremente le score et on génère une nouvelle nouriture.
  * Si le jeu n'est pas en pause, on déplace le serpent.
  * Si le jeu n'est pas en pause et qu'on touche un mur ou sa queue, le jeu redémarre.
- * Redessine de toute façon le jeu.
+ * Ne redessine pas de le jeu quand il est en pause, car rien n'a changé.
+ * On affiche l'indicateur de pause
  */
 function gameTick() {
   //Si le jeu n'est pas en pause
   if (gameState === GameStates.Play) {
+    //Augmenter la durée de la partie
+    gameDuration += gameSpeed;
+
     if (isFoodEaten(snake, food)) {
       shouldGrow = true //Le serpent va grandir
       food = generateFood(box, canvas, snake); //On génère une nouvelle nourriture
@@ -61,12 +66,13 @@ function gameTick() {
     
     moveSnake(snake, direction, box, shouldGrow); //On déplace le serpent
     
-    //On vérifie que le joueur ne doit pas mourir
+    //On vérifie si le joueur est mort
     if (checkWallCollision(snake.at(0), canvas) || checkCollision(snake)) {
       restartGame(); //TODO: Afficher l'écran des scores
     }
+    draw();
   }
-  draw();
+  drawPause();
 }
 
 /**
@@ -98,7 +104,13 @@ function draw() {
   drawSnake(ctx, snake, box); //Affiche le serpent
   drawScore(ctx, score); //Affiche le score
 
-  //Affichage de l'indicateur de pause
+  ctx.fillText(Math.round(gameDuration / 1000), 350, 20); //Affiche le temps TODO: mieux aligner le texte, fonction à part
+}
+
+/**
+ * Cette fonction affiche l'indicateur de pause
+ */
+function drawPause() {
   if (gameState === GameStates.Pause) {
     //Style du texte
     ctx.font = "52px Arial";
