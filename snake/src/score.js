@@ -1,4 +1,4 @@
-import { textColor } from "./config.js";
+import { textColor, textFont, textSize } from "./config.js";
 
 /**
  * Dessine le score sur le canvas.
@@ -10,7 +10,7 @@ import { textColor } from "./config.js";
  * @param {number} score - Le score à afficher, qui est un entier.
  */
 export function drawScore(ctx, score) {
-  ctx.font = "20px Arial";
+  ctx.font = textSize + " " + textFont;
   ctx.fillStyle = textColor;
   ctx.fillText(score, 5, 20);
 }
