@@ -3,7 +3,7 @@ import { generateFood, drawFood } from "./food.js";
 import { handleDirectionChange, handlePause } from "./controls.js";
 import { checkCollision, checkWallCollision } from "./collision.js";
 import { drawScore } from "./score.js";
-import { box, gameSpeed, textColor, GameStates } from "./config.js";
+import { box, gameSpeed, textColor, GameStates, textFont, textSize, titleSize, biggerTextSize } from "./config.js";
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
@@ -16,6 +16,7 @@ let gameInterval; // Variable pour stocker l'identifiant de l'intervalle
 let shouldGrow; //Si le serpent doit grandir au prochain tick
 let gameState = GameStates.Play; //Si le jeu est en pause.
 let gameDuration = 0; //La durée de la partie
+let bestScore = [{score: 42, time: 42}, {score: 23, time: 2342}, {score: 43, time: 34}, {score: 42, time: 42}, {score: 23, time: 2342}]; //Tableau qui stocke les 5 meilleurs scores
 
 //Pour le déplacement du serpent
 document.addEventListener("keydown", (event) => {
@@ -68,11 +69,20 @@ function gameTick() {
     
     //On vérifie si le joueur est mort
     if (checkWallCollision(snake.at(0), canvas) || checkCollision(snake)) {
-      restartGame(); //TODO: Afficher l'écran des scores
+      gameState = GameStates.GameOver;
+      clearInterval(gameInterval);
     }
+  }
+
+  if (gameState === GameStates.Play) {
     draw();
   }
-  drawPause();
+  else if (gameState === GameStates.Pause) {
+    drawPause();
+  }
+  else if (gameState === GameStates.GameOver) {
+    drawGameOver();
+  }
 }
 
 /**
@@ -111,14 +121,36 @@ function draw() {
  * Cette fonction affiche l'indicateur de pause
  */
 function drawPause() {
-  if (gameState === GameStates.Pause) {
-    //Style du texte
-    ctx.font = "52px Arial";
-    ctx.fillStyle = textColor;
+  //Style du texte
+  ctx.font = titleSize + " " + textFont;
+  ctx.fillStyle = textColor;
 
-    ctx.textBaseline = "middle"; //Centre le texte verticalement
-    ctx.textAlign = "center"; //Centre le texte horizontalement
-    ctx.fillText("PAUSE", canvas.width / 2, canvas.height / 2);
+  ctx.textBaseline = "middle"; //Centre le texte verticalement
+  ctx.textAlign = "center"; //Centre le texte horizontalement
+  ctx.fillText("PAUSE", canvas.width / 2, canvas.height / 2);
+}
+
+function drawGameOver() {
+  //Efface le caneva
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //Style du texte
+  ctx.font = titleSize + " " + textFont;
+  ctx.fillStyle = textColor;
+
+  ctx.textBaseline = "bottom"; //Centre le texte verticalement
+  ctx.textAlign = "center"; //Centre le texte horizontalement
+  ctx.fillText("Game Over !", canvas.width / 2, 60);
+
+  ctx.font = biggerTextSize + " " + textFont;
+  ctx.fillText("Ton score: " + score, canvas.width / 2, 95);
+  ctx.fillText("Ton temps: " + gameDuration / 1000 + "s", canvas.width / 2, 125);
+
+  ctx.font = textSize + " " + textFont;
+  ctx.fillText("Meilleurs score :", canvas.width / 2, 165);
+  let i = 1;
+  for (let scoreItem of bestScore) {
+    ctx.fillText(`${i}. ${scoreItem.score} points en ${scoreItem.time}s`, canvas.width / 2, 165 + i * 35);
+    i++;
   }
 }
 
