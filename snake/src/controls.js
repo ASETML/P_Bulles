@@ -1,4 +1,4 @@
-import { GameState } from "./config.js";
+import { GameStates } from "./config.js";
 
 /**
  * Gère le changement de direction du serpent en fonction de l'entrée de l'utilisateur.
@@ -55,17 +55,17 @@ export function handleDirectionChange(event, currentDirection) {
   }
 }
 
-export function handlePause(event, pause) {
+export function handlePause(event, gameState) {
   if (event.key === " ") {
     //Si le jeu est en pause, on le relance, sinon on le met en pause
-    if (pause === GameState.Pause) {
-      return GameState.Play;
+    if (gameState === GameStates.Pause) {
+      return GameStates.Play;
     }
     else {
-      return GameState.Pause;
+      return GameStates.Pause;
     }
   }
   else {
-    return pause;
+    return gameState;
   }
 }

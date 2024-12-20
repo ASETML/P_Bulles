@@ -10,7 +10,7 @@ export const foodColor = "red"; //La couleur de la nouriture
 export const textColor = "black"; //La couleur du texte
 
 //Enums
-export const GameState = {
+export const GameStates = {
     Play: "Play",
     Pause: "Pause",
     GameOver: "GameOver"

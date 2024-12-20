@@ -3,7 +3,7 @@ import { generateFood, drawFood } from "./food.js";
 import { handleDirectionChange, handlePause } from "./controls.js";
 import { checkCollision, checkWallCollision } from "./collision.js";
 import { drawScore } from "./score.js";
-import { box, gameSpeed, textColor, GameState } from "./config.js";
+import { box, gameSpeed, textColor, GameStates } from "./config.js";
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
@@ -14,7 +14,7 @@ let direction = "RIGHT"; //La direction du serpent
 let score = 0; //Le score du joueur
 let gameInterval; // Variable pour stocker l'identifiant de l'intervalle
 let shouldGrow; //Si le serpent doit grandir au prochain tick
-let pause = GameState.Play; //Si le jeu est en pause. TODO: remplacer par une enum
+let gameState = GameStates.Play; //Si le jeu est en pause.
 
 //Pour le déplacement du serpent
 document.addEventListener("keydown", (event) => {
@@ -23,7 +23,7 @@ document.addEventListener("keydown", (event) => {
 
 //Pour la pause
 document.addEventListener("keydown", (pauseEvent) => {
-  pause = handlePause(pauseEvent, pause); //On met à jour l'état du jeu
+  gameState = handlePause(pauseEvent, gameState); //On met à jour l'état du jeu
 });
 
 /**
@@ -49,7 +49,7 @@ function startGame() {
  */
 function gameTick() {
   //Si le jeu n'est pas en pause
-  if (pause === GameState.Play) {
+  if (gameState === GameStates.Play) {
     if (isFoodEaten(snake, food)) {
       shouldGrow = true //Le serpent va grandir
       food = generateFood(box, canvas, snake); //On génère une nouvelle nourriture
@@ -99,7 +99,7 @@ function draw() {
   drawScore(ctx, score); //Affiche le score
 
   //Affichage de l'indicateur de pause
-  if (pause === GameState.Pause) {
+  if (gameState === GameStates.Pause) {
     //Style du texte
     ctx.font = "52px Arial";
     ctx.fillStyle = textColor;
