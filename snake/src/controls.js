@@ -55,6 +55,12 @@ export function handleDirectionChange(event, currentDirection) {
   }
 }
 
+/**
+ * Met le jeu en pause / Met fin à la pause, quand on appuie sur espace
+ * @param {*} event 
+ * @param {*} gameState 
+ * @returns 
+ */
 export function handlePause(event, gameState) {
   if (event.key === " ") {
     //Si le jeu est en pause, on le relance, sinon on le met en pause
