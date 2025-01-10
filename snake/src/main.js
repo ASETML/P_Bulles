@@ -172,6 +172,7 @@ function drawGameOver() {
   ctx.fillText("Game Over !", canvas.width / 2, marginY);
   marginY += 35
 
+  //Notre résultat
   ctx.font = biggerTextSize + " " + textFont; //Titre h2
   ctx.fillText("Ton score: " + score, canvas.width / 2, marginY);
   marginY += 35
@@ -179,6 +180,7 @@ function drawGameOver() {
   ctx.fillText("Ton temps: " + Math.round(gameDuration / 1000) + "s", canvas.width / 2, marginY);
   marginY += 35
 
+  //Les meilleurs scores
   ctx.font = textSize + " " + textFont; //Texte standard
   ctx.fillText("Meilleurs score :", canvas.width / 2, marginY);
   marginY += 35
