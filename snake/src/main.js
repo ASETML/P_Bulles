@@ -2,7 +2,7 @@ import { initSnake, moveSnake, drawSnake, isFoodEaten } from "./snake.js";
 import { generateFood, drawFood } from "./food.js";
 import { handleDirectionChange, handlePause } from "./controls.js";
 import { checkCollision, checkWallCollision } from "./collision.js";
-import { drawScore } from "./score.js";
+import { addScore, drawScore, fetchScores, saveScores } from "./score.js";
 import { box, gameSpeed, textColor, GameStates, textFont, textSize, titleSize, biggerTextSize } from "./config.js";
 
 const canvas = document.getElementById("gameCanvas");
@@ -16,7 +16,7 @@ let gameInterval; // Variable pour stocker l'identifiant de l'intervalle
 let shouldGrow; //Si le serpent doit grandir au prochain tick
 let gameState = GameStates.Play; //Si le jeu est en pause.
 let gameDuration = 0; //La durée de la partie
-let bestScore = [{score: 42, time: 42}, {score: 23, time: 2342}, {score: 43, time: 34}, {score: 42, time: 42}, {score: 23, time: 2342}]; //Tableau qui stocke les 5 meilleurs scores
+let bestScore //Tableau qui stocke les 5 meilleurs scores
 
 //Pour le déplacement du serpent
 document.addEventListener("keydown", (event) => {
@@ -134,6 +134,8 @@ function drawPause() {
  * Affiche l'écran des scores
  */
 function drawGameOver() {
+  bestScore = fetchScores(); //Récupèration des meilleurs scores
+  addScore(bestScore, 42, 24);
   //Efface le caneva
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //Style du texte

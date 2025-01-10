@@ -14,3 +14,25 @@ export function drawScore(ctx, score) {
   ctx.fillStyle = textColor;
   ctx.fillText(score, 5, 20);
 }
+
+/**
+ * Cette fonction récupère la liste des meilleurs scores
+ */
+export function fetchScores() {
+  return [{score: 42, time: 42}, {score: 23, time: 2342}, {score: 43, time: 34}, {score: 42, time: 42}, {score: 23, time: 2342}];
+}
+
+/**
+ * Ajoute si nécessaire le score à la liste des meilleurs scores
+ */
+export function addScore(scoreList, newScore, newTime) {
+  debugger
+  scoreList.push({score: newScore, time: newTime});
+}
+
+/**
+ * Sauvegarde la liste des meilleurs scores
+ */
+export function saveScores(scoreList) {
+
+}
