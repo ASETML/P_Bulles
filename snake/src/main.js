@@ -3,7 +3,7 @@ import { generateFood, drawFood } from "./food.js";
 import { handleDirectionChange, handlePause } from "./controls.js";
 import { checkCollision, checkWallCollision } from "./collision.js";
 import { addScore, drawScore, fetchScores, saveScores } from "./score.js";
-import { box, gameSpeed, textColor, GameStates, textFont, textSize, titleSize, biggerTextSize } from "./config.js";
+import { box, gameSpeed, textColor, GameStates, textFont, textSize, titleSize, biggerTextSize, topMargin } from "./config.js";
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
@@ -113,8 +113,16 @@ function draw() {
   drawFood(ctx, food, box); //Affiche la nouriture
   drawSnake(ctx, snake, box); //Affiche le serpent
   drawScore(ctx, score); //Affiche le score
+  drawTimer(); //Affiche le temps
+}
 
-  ctx.fillText(Math.round(gameDuration / 1000), 350, 20); //Affiche le temps TODO: mieux aligner le texte, fonction à part
+function drawTimer() {
+  //Style du texte
+  ctx.font = textSize + " " + textFont;
+  ctx.textBaseline = "bottom"; //Alignement vertical du texte
+  ctx.textAlign = "right"; //Alignement horizontal du texte
+
+  ctx.fillText(Math.round(gameDuration / 1000) + "s", canvas.width, topMargin); //Affiche le temps TODO: mieux aligner le texte, fonction à part
 }
 
 /**
@@ -124,9 +132,9 @@ function drawPause() {
   //Style du texte
   ctx.font = titleSize + " " + textFont;
   ctx.fillStyle = textColor;
-
   ctx.textBaseline = "middle"; //Centre le texte verticalement
   ctx.textAlign = "center"; //Centre le texte horizontalement
+
   ctx.fillText("PAUSE", canvas.width / 2, canvas.height / 2);
 }
 
@@ -134,29 +142,38 @@ function drawPause() {
  * Affiche l'écran des scores
  */
 function drawGameOver() {
+  let marginY = 60;
+  //Gestion des scores
   bestScore = fetchScores(); //Récupèration des meilleurs scores
-  bestScore = addScore(bestScore, score, gameDuration / 1000);
-  saveScores(bestScore);
+  bestScore = addScore(bestScore, score, gameDuration / 1000); //Ajout du score si nécessaire
+  saveScores(bestScore); //Sauvegarde des scores
+
   //Efface le caneva
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //Style du texte
-  ctx.font = titleSize + " " + textFont;
+  ctx.font = titleSize + " " + textFont; //Titre h1
   ctx.fillStyle = textColor;
 
   ctx.textBaseline = "bottom"; //Centre le texte verticalement
   ctx.textAlign = "center"; //Centre le texte horizontalement
-  ctx.fillText("Game Over !", canvas.width / 2, 60);
+  ctx.fillText("Game Over !", canvas.width / 2, marginY);
+  marginY += 35
 
-  ctx.font = biggerTextSize + " " + textFont;
-  ctx.fillText("Ton score: " + score, canvas.width / 2, 95);
-  ctx.fillText("Ton temps: " + Math.round(gameDuration / 1000) + "s", canvas.width / 2, 125);
+  ctx.font = biggerTextSize + " " + textFont; //Titre h2
+  ctx.fillText("Ton score: " + score, canvas.width / 2, marginY);
+  marginY += 35
 
-  ctx.font = textSize + " " + textFont;
-  ctx.fillText("Meilleurs score :", canvas.width / 2, 165);
-  let i = 1;
+  ctx.fillText("Ton temps: " + Math.round(gameDuration / 1000) + "s", canvas.width / 2, marginY);
+  marginY += 35
+
+  ctx.font = textSize + " " + textFont; //Texte standard
+  ctx.fillText("Meilleurs score :", canvas.width / 2, marginY);
+  marginY += 35
+
+  let index = 1
   for (let scoreItem of bestScore) {
-    ctx.fillText(`${i}. ${scoreItem.score} points en ${scoreItem.time}s`, canvas.width / 2, 165 + i * 35);
-    i++;
+    ctx.fillText(`${index}. ${scoreItem.score} points en ${scoreItem.time}s`, canvas.width / 2, marginY);
+    marginY += 35
   }
 }
 

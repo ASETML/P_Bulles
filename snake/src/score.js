@@ -1,4 +1,4 @@
-import { textColor, textFont, textSize } from "./config.js";
+import { textColor, textFont, textSize, topMargin } from "./config.js";
 
 /**
  * Dessine le score sur le canvas.
@@ -10,9 +10,12 @@ import { textColor, textFont, textSize } from "./config.js";
  * @param {number} score - Le score à afficher, qui est un entier.
  */
 export function drawScore(ctx, score) {
+  ctx.textBaseline = "bottom"; //Alignement vertical du texte
+  ctx.textAlign = "left"; //Alignement horizontal du texte
   ctx.font = textSize + " " + textFont;
   ctx.fillStyle = textColor;
-  ctx.fillText(score, 5, 20);
+
+  ctx.fillText(`Score: ${score}`, 0, topMargin);
 }
 
 /**

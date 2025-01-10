@@ -1,6 +1,6 @@
 //Constante du jeu
 export const box = 20; //La taille d'une case
-export const gameSpeed = 200; //La vitesse du jeu
+export const gameSpeed = 200; //L'interval entre chaques ticks du jeu (La vitesse du jeu)
 
 //Constante d'affichage
 export const snakeColor = "limeGreen"; //La couleur du serpent
@@ -12,6 +12,7 @@ export const textSize = "20px"; //La taille du texte
 export const biggerTextSize = "32px"; //La taille d'un texte plus grand
 export const titleSize = "52px"; //La taille des titres
 export const textFont = "Arial"; //La police des textes
+export const topMargin = 20; //Le décalage du texte situé en haut de l'écran
 
 //Touches
 export const upKey = "ArrowUp"; //La touche qui fait monter le serpent
