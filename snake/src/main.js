@@ -135,7 +135,8 @@ function drawPause() {
  */
 function drawGameOver() {
   bestScore = fetchScores(); //Récupèration des meilleurs scores
-  addScore(bestScore, 42, 24);
+  bestScore = addScore(bestScore, score, gameDuration / 1000);
+  saveScores(bestScore);
   //Efface le caneva
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //Style du texte
@@ -148,7 +149,7 @@ function drawGameOver() {
 
   ctx.font = biggerTextSize + " " + textFont;
   ctx.fillText("Ton score: " + score, canvas.width / 2, 95);
-  ctx.fillText("Ton temps: " + gameDuration / 1000 + "s", canvas.width / 2, 125);
+  ctx.fillText("Ton temps: " + Math.round(gameDuration / 1000) + "s", canvas.width / 2, 125);
 
   ctx.font = textSize + " " + textFont;
   ctx.fillText("Meilleurs score :", canvas.width / 2, 165);
