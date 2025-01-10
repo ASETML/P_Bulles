@@ -1,4 +1,4 @@
-import { GameStates } from "./config.js";
+import { GameStates, upKey, downKey, leftKey, rightKey, pauseKey } from "./config.js";
 
 /**
  * Gère le changement de direction du serpent en fonction de l'entrée de l'utilisateur.
@@ -22,28 +22,28 @@ export function handleDirectionChange(event, currentDirection) {
   //Sinon, on retourne la direction actuelle
   //Si l'utilisateur n'a pas pressé une touche de direction, on retourne la direction actuelle
   switch (key) {
-    case "ArrowLeft":
+    case leftKey:
       if (currentDirection != "RIGHT") {
         return "LEFT";
       }
       else {
         return currentDirection;
       }
-    case "ArrowRight":
+    case rightKey:
       if (currentDirection != "LEFT") {
         return "RIGHT";
       }
       else {
         return currentDirection;
       }
-    case "ArrowDown":
+    case downKey:
       if (currentDirection != "UP") {
         return "DOWN";
       }
       else {
         return currentDirection;
       }
-    case "ArrowUp":
+    case upKey:
       if (currentDirection != "DOWN") {
         return "UP";
       }
@@ -62,7 +62,7 @@ export function handleDirectionChange(event, currentDirection) {
  * @returns 
  */
 export function handlePause(event, gameState) {
-  if (event.key === " ") {
+  if (event.key === pauseKey) {
     //Si le jeu est en pause, on le relance, sinon on le met en pause
     if (gameState === GameStates.Pause) {
       return GameStates.Play;

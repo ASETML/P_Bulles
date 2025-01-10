@@ -13,6 +13,13 @@ export const biggerTextSize = "32px"; //La taille d'un texte plus grand
 export const titleSize = "52px"; //La taille des titres
 export const textFont = "Arial"; //La police des textes
 
+//Touches
+export const upKey = "ArrowUp"; //La touche qui fait monter le serpent
+export const downKey = "ArrowDown"; //La touche qui fait descendre le serpent
+export const leftKey = "ArrowLeft"; //La touche qui dirige le serpent vers la gauche
+export const rightKey = "ArrowRight"; //La touche qui dirige le serpent vers la droite
+export const pauseKey = " "; //La touche qui met le jeu en pause
+
 //Enums
 export const GameStates = {
     Play: "Play",
