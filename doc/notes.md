@@ -309,5 +309,11 @@
 ## 10.01.2025
 - Tests formatifs : 
     - Conseillés
+    - Test
+        - 2 : 4/6
+        - 3 : 2/3
+        - 4 : 5/7
+        - 5 : 6/6
+        - 6 : 4/7
 - Prochain trimestre : 
     - Javascript avec framework
