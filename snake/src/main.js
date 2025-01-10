@@ -28,6 +28,11 @@ document.addEventListener("keydown", (pauseEvent) => {
   gameState = handlePause(pauseEvent, gameState); //On met à jour l'état du jeu
 });
 
+//Redémarre le jeu quand on clique sur le bouton pour rejouer
+replayButton.addEventListener("click", () => {
+  restartGame();
+});
+
 /**
  * Démarre le jeu.
  * 
@@ -92,11 +97,15 @@ function gameTick() {
  * Elle appelle ensuite startGame et relance le jeu.
  */
 function restartGame() {
+  //Cache le bouton pour rejouer
+  replayButton.style.display = "none"; 
   //Vide les valeurs pour préparer la nouvelle partie
+  ctx.clearRect(0, 0, canvas.width, canvas.height); //Efface le canevas
   snake = null;
   food = null;
   direction = "RIGHT";
   score = 0;
+  gameState = GameStates.Play;
   clearInterval(gameInterval);
   shouldGrow = null;
 
@@ -142,6 +151,10 @@ function drawPause() {
  * Affiche l'écran des scores
  */
 function drawGameOver() {
+  //Affiche le bouton pour rejouer
+  replayButton.style.display = "block"; 
+
+  //La marge entre les éléments
   let marginY = 60;
   //Gestion des scores
   bestScore = fetchScores(); //Récupèration des meilleurs scores
@@ -174,6 +187,7 @@ function drawGameOver() {
   for (let scoreItem of bestScore) {
     ctx.fillText(`${index}. ${scoreItem.score} points en ${scoreItem.time}s`, canvas.width / 2, marginY);
     marginY += 35
+    index++;
   }
 }
 
