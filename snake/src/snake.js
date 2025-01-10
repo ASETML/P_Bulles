@@ -79,11 +79,18 @@ export function drawSnake(ctx, snake, box) {
       ctx.fillStyle = snakeColor;
     }
 
+    //Contour du serpent
     ctx.fillRect(segment.x, segment.y, box, box);
     ctx.strokeRect(segment.x, segment.y, box, box);
   }
 }
 
+/**
+ * Fonction qui indique si le serpent est sur une nouriture
+ * @param {*} snake - Le serpent
+ * @param {*} food - La nouriture
+ * @returns 
+ */
 export function isFoodEaten(snake, food) {
   //Vérifie si la nouriture doit être mangée
   if (snake.at(0).x === food.x && snake.at(0).y === food.y) {
