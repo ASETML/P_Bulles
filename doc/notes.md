@@ -317,3 +317,26 @@
         - 6 : 4/7
 - Prochain trimestre : 
     - Javascript avec framework
+- Trier des tableaux
+    - Array.sort() : 
+        - [W3Schools](https://www.w3schools.com/js/js_array_sort.asp)
+        - [Mdn Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+        - Array.sort(compareFn) :
+            - compareFn : fonction de comparaison : 
+                - Détermine l'ordre des éléments
+                - compareFn(a, b) -> retourne une valeur
+                - Si valeur > 0 -> a après b
+                - Si valeur < 0 -> a avant b
+                - Si valeur = 0 -> garde le même ordre
+                - ``` const items = [
+                    { name: "Edward", value: 21 },
+                    { name: "Sharpe", value: 37 },
+                    { name: "And", value: 45 },
+                    { name: "The", value: -12 },
+                    { name: "Magnetic", value: 13 },
+                    { name: "Zeros", value: 37 },
+                    ];
+
+                    // sort by value
+                    items.sort((a, b) => a.value - b.value);
+                    ```
