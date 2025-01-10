@@ -305,3 +305,9 @@
 - Aujourd'hui :
     - feat(score): Ajout d'un timer
     - Ecran de gameOver
+
+## 10.01.2025
+- Tests formatifs : 
+    - Conseillés
+- Prochain trimestre : 
+    - Javascript avec framework
