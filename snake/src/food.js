@@ -30,11 +30,17 @@ export function generateFood(box, canvas, snake) {
   return foodPos; //On retourne la nouriture
 }
 
+/**
+ * Cette fonction génère une coordinée alignée sur la grille
+ * @param {*} box - La taille d'une case
+ * @param {*} canvas - Le caneva
+ * @returns 
+ */
 function generateCoordinate(box, canvas) {
   let pos;
   // On génère un nombre aléatoire
   let random = Math.floor(Math.random() * (canvas.width / box)); //Genere un nombre rond https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-  // On le multiplie par la taille d'une case: il sera forcèment sur la grille
+  // On le multiplie par la taille d'une case: il sera forcément sur la grille
   pos = random * box;
   return pos;
 }
