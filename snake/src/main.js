@@ -130,6 +130,9 @@ function drawPause() {
   ctx.fillText("PAUSE", canvas.width / 2, canvas.height / 2);
 }
 
+/**
+ * Affiche l'écran des scores
+ */
 function drawGameOver() {
   //Efface le caneva
   ctx.clearRect(0, 0, canvas.width, canvas.height);
